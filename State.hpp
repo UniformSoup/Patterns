@@ -12,6 +12,6 @@ class StateMachine
 	public:
 
 		StateMachine(std::unique_ptr<StateType>&& state) : currentState(std::move(state)) {}
-		void	   transition(std::unique_ptr<StateType>&& newState) { nextState = std::move(newState); }
+		void	   transition(std::unique_ptr<StateType>&& newState) { currentState = std::move(newState); }
 		StateType& state() { return *currentState; }
 };
