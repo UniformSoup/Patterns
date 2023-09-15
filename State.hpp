@@ -7,11 +7,11 @@
 template <typename StateType>
 class StateMachine
 {
-		std::unique_ptr<StateType> currentState;
+		std::shared_ptr<StateType> currentState;
 
 	public:
 
-		StateMachine(std::unique_ptr<StateType>&& state) : currentState(std::move(state)) {}
-		void	   transition(std::unique_ptr<StateType>&& newState) { currentState = std::move(newState); }
-		StateType& state() { return *currentState; }
+		StateMachine(std::shared_ptr<StateType>&& state) : currentState(std::move(state)) {}
+		void	   transition(std::shared_ptr<StateType>&& newState) { currentState = std::move(newState); }
+		std::shared_ptr<StateType> state() { return currentState; }
 };
