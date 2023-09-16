@@ -12,6 +12,6 @@ class StateMachine
 	public:
 
 		StateMachine(std::shared_ptr<StateType>&& state) : currentState(std::move(state)) {}
-		void	   transition(std::shared_ptr<StateType>&& newState) { currentState = std::move(newState); }
+		void					   transition(std::shared_ptr<StateType>&& newState) { currentState = std::move(newState); }
 		std::shared_ptr<StateType> state() { return currentState; }
 };
