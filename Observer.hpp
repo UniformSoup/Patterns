@@ -12,7 +12,7 @@ class Observer
 
 	public:
 
-		virtual void update(T const& data) {};
+		virtual void observe(T const& data) {};
 		~Observer()
 		{
 			for (Observable<T>* observable : observing) observable->remove(this);
@@ -28,7 +28,7 @@ class Observable
 
 		void notify(T const& data)
 		{
-			for (Observer<T>* observer : observers) observer->update(data);
+			for (Observer<T>* observer : observers) observer->observe(data);
 		}
 		void add(Observer<T>* observer) { observers.push_back(observer); }
 		void remove(Observer<T>* observer)
